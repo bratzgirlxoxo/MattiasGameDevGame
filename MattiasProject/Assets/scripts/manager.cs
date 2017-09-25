@@ -8,6 +8,7 @@ public class manager : MonoBehaviour
 	public GameObject self;
 	public GameObject bucket;
 	public GameObject leftShoot;
+	public GameObject[] healthBar;
 
 	public int health;
 	public int ammo;
@@ -25,6 +26,19 @@ public class manager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+
+		for (int i = 0; i < 10; i++)
+		{
+			if ((i + 1) <= health)
+			{
+				healthBar[i].SetActive(true);
+			}
+			else
+			{
+				healthBar[i].SetActive(false);
+			}
+		}
+		
 		if (health <= 0)
 		{
 			Destroy(self);

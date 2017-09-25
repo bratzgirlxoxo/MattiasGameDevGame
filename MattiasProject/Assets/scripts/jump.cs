@@ -19,31 +19,20 @@ public class jump : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
-		
-		
-		if (onGround && Input.GetKeyDown(KeyCode.W))
+		if (onGround && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
 		{
 			rbody.AddForce(Vector2.up * strength, ForceMode2D.Impulse);
 		}
-	}
 
-	void OnCollisionExit2D(Collision2D col)
-	{
-		if (col.gameObject.tag.Equals("ground"))
+		if (rbody.velocity.y > 0.000001f)
 		{
 			onGround = false;
-			print("IN AIR");
 		}
-
-	}
-
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		if (col.gameObject.tag.Equals("ground"))
+		else
 		{
 			onGround = true;
-			print("ON GROUND");
 		}
 	}
+
+	
 }

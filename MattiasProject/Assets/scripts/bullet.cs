@@ -28,11 +28,15 @@ public class bullet : MonoBehaviour
 		if (other.gameObject.tag.Equals("ground"))
 		{
 			Destroy(self); 
+			print("ground hit");
 		} else if (other.gameObject.tag.Equals("Player"))
 		{
-			other.gameObject.GetComponent<manager>().health--;
 			Destroy(self);
 			print("player hit");
+		} else if (other.gameObject.tag.Equals("bullet"))
+		{
+			Destroy(other.gameObject);
+			Destroy(self);
 		}
 	}
 }

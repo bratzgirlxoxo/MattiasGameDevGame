@@ -40,7 +40,6 @@ public class catcher : MonoBehaviour
 			
 			newWall.transform.position = pos;
 			man.ammo = 0;
-			print("zero ammo!");
 		}
 
 		for (int i = 0; i < bullets.Length; ++i)

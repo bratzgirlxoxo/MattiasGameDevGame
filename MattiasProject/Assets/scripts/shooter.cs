@@ -45,21 +45,6 @@ public class shooter : MonoBehaviour
 			
 		}
 		
-		//if (Time)
 	}
 
-	void shoot()
-	{
-		print("shooting");
-		float startT2 = Time.time;
-		int x = 0;
-		while (x < 8)
-		{
-			if ((Time.time - startT2 >= 1.0f))
-			{
-				startT2 = Time.time;
-				
-			}
-		}
-	}
 }
