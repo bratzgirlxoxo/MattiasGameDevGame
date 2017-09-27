@@ -25,7 +25,7 @@ public class bucket : MonoBehaviour
 		}
 		
 		
-		if (Input.GetKeyDown(KeyCode.S) && canUse)
+		if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Slash)) && canUse)
 		{
 			if (activeBuck.activeSelf)
 			{

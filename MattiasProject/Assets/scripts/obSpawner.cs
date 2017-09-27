@@ -10,6 +10,7 @@ public class obSpawner : MonoBehaviour
 	public GameObject leftBound;
 	public GameObject rightBound;
 	public GameObject paps;
+	public GameObject spawner;
 
 	private float left;
 	private float right;
@@ -27,7 +28,7 @@ public class obSpawner : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time - startT >= dropInterval)
+		if ((Time.time - startT >= dropInterval) && (spawner.activeSelf == false))
 		{
 			startT = Time.time;
 			dropObj();

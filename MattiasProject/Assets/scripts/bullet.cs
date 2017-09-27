@@ -28,7 +28,7 @@ public class bullet : MonoBehaviour
 		if (other.gameObject.tag.Equals("ground"))
 		{
 			Destroy(self); 
-			print("ground hit");
+			print("ground hitter");
 		} else if (other.gameObject.tag.Equals("Player"))
 		{
 			Destroy(self);
@@ -37,6 +37,6 @@ public class bullet : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 			Destroy(self);
-		}
+		} 
 	}
 }

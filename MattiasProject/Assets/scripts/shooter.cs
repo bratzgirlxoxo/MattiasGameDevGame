@@ -12,6 +12,7 @@ public class shooter : MonoBehaviour
 	public GameObject topBound;
 	public GameObject bottomBound;
 	public GameObject paps;
+	public GameObject startP;
 
 	private float top;
 	private float bottom;
@@ -29,21 +30,23 @@ public class shooter : MonoBehaviour
 	private float startT = 0;
 	void Update ()
 	{
-		//print(Time.time);
-		if ((Time.time) - startT >= interval)
+		if (startP.activeSelf == false)
 		{
-			//print("shooting");
-			startT = Time.time;
-			GameObject bull = Instantiate(bullet, paps.transform.position, Quaternion.identity);
-			float yPos = Random.Range(bottom, top);
-			Vector3 pos = bull.transform.position;
-			pos.y = yPos;
-			bull.transform.position = pos;
+			if ((Time.time) - startT >= interval)
+			{
+				//print("shooting");
+				startT = Time.time;
+				GameObject bull = Instantiate(bullet, paps.transform.position, Quaternion.identity);
+				float yPos = Random.Range(bottom, top);
+				Vector3 pos = bull.transform.position;
+				pos.y = yPos;
+				bull.transform.position = pos;
 			
-			bull.GetComponent<Rigidbody2D>().AddForce(direction * strength);
-			//print("SHOT");
-			
+				bull.GetComponent<Rigidbody2D>().AddForce(direction * strength);
+			}
 		}
+
+		
 		
 	}
 

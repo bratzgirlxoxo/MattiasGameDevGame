@@ -9,7 +9,7 @@ public class catcher : MonoBehaviour
 	public GameObject[] bullets;
 	public GameObject manager;
 	public GameObject wall;
-	private manager man;
+	public manager man;
 	public float distance;
 	public GameObject buck;
 	private bucket buckt;
@@ -61,12 +61,13 @@ public class catcher : MonoBehaviour
 	{
 		if (other.gameObject.tag.Equals("bullet"))
 		{
+			Destroy(other.gameObject);
 			if (man.ammo < 3)
 			{
 				man.ammo++;
 				
 			}
-			Destroy(other.gameObject);
+			
 		}
 	}
 }

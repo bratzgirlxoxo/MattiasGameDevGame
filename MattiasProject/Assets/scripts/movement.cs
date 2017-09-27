@@ -8,7 +8,6 @@ public class movement : MonoBehaviour
 	private Rigidbody2D rbody;
 	
 	private float maxVelocity = 3;
-	private jump jumper;
 	private bool left = true;
 	private bool right;
 
@@ -19,7 +18,6 @@ public class movement : MonoBehaviour
 	void Start ()
 	{
 		rbody = GetComponent<Rigidbody2D>();
-		jumper = GetComponent<jump>();
 		activeBuck = GetComponent<bucket>();
 	}
 
@@ -27,9 +25,10 @@ public class movement : MonoBehaviour
 	void Update ()
 	{
 		// move left
-		if (Input.GetAxis("Horizontal") < 0)
+		if (Input.GetAxisRaw("Horizontal") < 0)
 		{
-			rbody.AddForce(Vector2.left * strength);
+			//rbody.AddForce(Vector2.left * strength);
+			transform.Translate(-0.04f, 0, 0);
 			left = true;
 			if (left && right)
 			{
@@ -46,10 +45,10 @@ public class movement : MonoBehaviour
 
 		}
 		// move right
-		if (Input.GetAxis("Horizontal") > 0)
+		if (Input.GetAxisRaw("Horizontal") > 0)
 		{
-			rbody.AddForce(Vector2.right * strength);
-
+			//rbody.AddForce(Vector2.right * strength);
+			transform.Translate(0.04f, 0, 0);
 			right = true;
 			if (left && right)
 			{

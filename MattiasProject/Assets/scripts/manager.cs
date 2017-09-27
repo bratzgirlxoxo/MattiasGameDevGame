@@ -9,12 +9,13 @@ public class manager : MonoBehaviour
 	public GameObject bucket;
 	public GameObject leftShoot;
 	public GameObject[] healthBar;
+	public GameObject spawner;
 
 	public int health;
 	public int ammo;
 	public float directionSwitch;
 
-	private float startT = 0f;
+	private float startT;
 	private bool leftShooter = true;
 	
 	// Use this for initialization
@@ -65,13 +66,21 @@ public class manager : MonoBehaviour
 			leftShoot.transform.position = pos;
 		}
 
+
 		
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
+		GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+		
+		spawner.SetActive(true);
+		GetComponent<movement>().enabled = false;
+		GetComponent<bucket>().enabled = false;
+		GetComponent<jump>().enabled = false;
+		
 		Vector2 pos = transform.position;
-		pos.y = 1.0f;
+		pos.y = 1.35f;
 		pos.x = 0f;
 		transform.position = pos;
 	}

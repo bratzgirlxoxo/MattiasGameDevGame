@@ -40,11 +40,10 @@ public class obstacle : MonoBehaviour
 			print("LANDED");
 			startT = Time.time;
 			land = true;
-		}
-
-		if (other.gameObject.CompareTag("Player"))
+		} else if (other.gameObject.CompareTag("Player"))
 		{
-			other.gameObject.GetComponent<manager>().health--;
+			print("hit wall!");
+			other.gameObject.GetComponentInParent<manager>().health--;
 		}
 	}
 }
