@@ -11,6 +11,7 @@ public class obstacle : MonoBehaviour
 	
 	private float startT;
 	private bool halt;
+	private float hitT;
 
 	private Rigidbody2D rbody;
 
@@ -40,10 +41,6 @@ public class obstacle : MonoBehaviour
 			print("LANDED");
 			startT = Time.time;
 			land = true;
-		} else if (other.gameObject.CompareTag("Player"))
-		{
-			print("hit wall!");
-			other.gameObject.GetComponentInParent<manager>().health--;
-		}
+		} 
 	}
 }

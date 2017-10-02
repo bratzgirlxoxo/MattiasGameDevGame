@@ -25,17 +25,19 @@ public class bullet : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		if (other.gameObject.tag.Equals("ground"))
+		GameObject thing = other.gameObject;
+		
+		if (thing.tag.Equals("ground") || thing.tag.Equals("obs"))
 		{
 			Destroy(self); 
 			print("ground hitter");
-		} else if (other.gameObject.tag.Equals("Player"))
+		} else if (thing.tag.Equals("Player"))
 		{
 			Destroy(self);
 			print("player hit");
-		} else if (other.gameObject.tag.Equals("bullet"))
+		} else if (thing.tag.Equals("bullet"))
 		{
-			Destroy(other.gameObject);
+			Destroy(thing);
 			Destroy(self);
 		} 
 	}

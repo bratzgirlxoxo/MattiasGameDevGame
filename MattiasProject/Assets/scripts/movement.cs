@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VR;
 
 public class movement : MonoBehaviour
 {
@@ -24,10 +25,14 @@ public class movement : MonoBehaviour
 	public float strength;
 	void Update ()
 	{
+		InputThings();
+	}
+
+	private void InputThings()
+	{
 		// move left
 		if (Input.GetAxisRaw("Horizontal") < 0)
 		{
-			//rbody.AddForce(Vector2.left * strength);
 			transform.Translate(-0.04f, 0, 0);
 			left = true;
 			if (left && right)
@@ -47,7 +52,6 @@ public class movement : MonoBehaviour
 		// move right
 		if (Input.GetAxisRaw("Horizontal") > 0)
 		{
-			//rbody.AddForce(Vector2.right * strength);
 			transform.Translate(0.04f, 0, 0);
 			right = true;
 			if (left && right)
@@ -64,4 +68,5 @@ public class movement : MonoBehaviour
 		}
 	}
 
+	
 }

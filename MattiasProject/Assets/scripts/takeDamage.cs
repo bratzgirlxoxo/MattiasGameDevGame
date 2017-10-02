@@ -7,9 +7,37 @@ public class takeDamage : MonoBehaviour
 
 	public GameObject self;
 	private float spriteT;
+	private float obsT;
+	private bool doublehit;
 
 	void Update()
 	{
+		flashRed();
+		checkObs();
+	}
+	
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		GameObject thing = other.gameObject;
+		
+		
+		if (thing.CompareTag("bullet"))
+		{
+			Destroy(thing);
+			spriteT = Time.time;
+			self.GetComponent<manager>().health--;
+			
+		} else if (thing.CompareTag("obs") && !doublehit)
+		{
+			spriteT = Time.time;
+			obsT = Time.time;
+			doublehit = true;
+			self.GetComponent<manager>().health--;
+		}
+	}
+
+	private void flashRed()
+	{	
 		if (spriteT > 0 && Time.time - spriteT <= 0.1)
 		{
 			self.GetComponent<SpriteRenderer>().color = Color.red;
@@ -20,14 +48,13 @@ public class takeDamage : MonoBehaviour
 			spriteT = 0;
 		}
 	}
-	
-	private void OnCollisionEnter2D(Collision2D other)
+
+	private void checkObs()
 	{
-		if (other.gameObject.tag.Equals("bullet"))
+		if (Time.time - obsT > 1)
 		{
-			spriteT = Time.time;
-			self.GetComponent<manager>().health--;
-			
+			doublehit = false;
+			obsT = 0;
 		}
 	}
 }
