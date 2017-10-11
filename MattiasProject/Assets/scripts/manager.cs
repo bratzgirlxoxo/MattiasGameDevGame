@@ -10,7 +10,7 @@ public class manager : MonoBehaviour
 	public GameObject leftShoot;
 	public GameObject[] healthBar;
 	public GameObject spawner;
-
+	
 	public int health;
 	public int ammo;
 	public float directionSwitch;
@@ -83,5 +83,7 @@ public class manager : MonoBehaviour
 		pos.y = 1.35f;
 		pos.x = 0f;
 		transform.position = pos;
+
+		health--;
 	}
 }

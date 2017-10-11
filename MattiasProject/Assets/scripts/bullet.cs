@@ -6,9 +6,9 @@ public class bullet : MonoBehaviour
 {
 
 	public GameObject self;
-	public GameObject manager;
 
 	public float startT;
+	public float lifetime;
 
 	void Start()
 	{
@@ -17,7 +17,7 @@ public class bullet : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time - startT >= 7f)
+		if (Time.time - startT >= lifetime)
 		{
 			Destroy(self);
 		}
@@ -27,7 +27,7 @@ public class bullet : MonoBehaviour
 	{
 		GameObject thing = other.gameObject;
 		
-		if (thing.tag.Equals("ground") || thing.tag.Equals("obs"))
+		if (thing.tag.Equals("ground") || thing.tag.Equals("obs") || thing.tag.Equals("ground2"))
 		{
 			Destroy(self); 
 			print("ground hitter");

@@ -20,7 +20,7 @@ public class dropChecker : MonoBehaviour
 	{
 		GameObject thing = other.gameObject;
 
-		if (thing.CompareTag("ground"))
+		if (thing.CompareTag("ground2"))
 		{
 			platform = thing.GetComponent<Collider2D>();
 			canDrop = true;

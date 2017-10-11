@@ -7,6 +7,7 @@ public class obSpawner : MonoBehaviour
 
 	public GameObject[] obstacles;
 
+	public GameObject coin;
 	public GameObject leftBound;
 	public GameObject rightBound;
 	public GameObject paps;
@@ -14,11 +15,14 @@ public class obSpawner : MonoBehaviour
 
 	private float left;
 	private float right;
-
 	private float startT;
+	private float coinT;
 
 	public float dropInterval;
-
+	public int lowBoundCoinSpawn;
+	public int highBoundCoinSpawn;
+	
+	
 	// Use this for initialization
 	void Start ()
 	{
@@ -32,7 +36,10 @@ public class obSpawner : MonoBehaviour
 		{
 			startT = Time.time;
 			dropObj();
+			
 		}
+		
+		dropCoin();
 	}
 
 	void dropObj()
@@ -43,5 +50,22 @@ public class obSpawner : MonoBehaviour
 		Vector3 pos = obs.transform.position;
 		pos.x = xPos;
 		obs.transform.position = pos;
+	}
+
+	void dropCoin()
+	{
+		if (coinT == 0)
+		{
+			coinT = Random.Range(lowBoundCoinSpawn, highBoundCoinSpawn + 1) + Time.time;
+		} else if (Time.time - coinT >= 0)
+		{
+			GameObject collectable = Instantiate(coin, paps.transform.position, Quaternion.identity);
+			float xPos = Random.Range(left, right);
+			Vector3 pos = collectable.transform.position;
+			pos.x = xPos;
+			collectable.transform.position = pos;
+
+			coinT = 0;
+		}
 	}
 }

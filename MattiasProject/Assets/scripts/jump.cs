@@ -24,7 +24,7 @@ public class jump : MonoBehaviour
 			rbody.AddForce(Vector2.up * strength, ForceMode2D.Impulse);
 		}
 
-		if (rbody.velocity.y > 0.000001f)
+		if (rbody.velocity.y > 0.000001f || rbody.velocity.y < -0.000001f)
 		{
 			onGround = false;
 		}

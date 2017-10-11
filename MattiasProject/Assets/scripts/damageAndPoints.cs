@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class takeDamage : MonoBehaviour
+public class damageAndPoints : MonoBehaviour
 {
 
 	public GameObject self;
+	public GameObject manager;
 	private float spriteT;
 	private float obsT;
 	private bool doublehit;
@@ -33,12 +34,16 @@ public class takeDamage : MonoBehaviour
 			obsT = Time.time;
 			doublehit = true;
 			self.GetComponent<manager>().health--;
+		} else if (thing.CompareTag("coin"))
+		{
+			Destroy(thing);
+			manager.GetComponent<gManager>().points++;
 		}
 	}
 
 	private void flashRed()
 	{	
-		if (spriteT > 0 && Time.time - spriteT <= 0.1)
+		if (spriteT > 0 && Time.time - spriteT <= 0.2)
 		{
 			self.GetComponent<SpriteRenderer>().color = Color.red;
 		}

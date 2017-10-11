@@ -8,9 +8,9 @@ public class movement : MonoBehaviour
 
 	private Rigidbody2D rbody;
 	
-	private float maxVelocity = 3;
 	private bool left = true;
 	private bool right;
+	public float strength;
 
 
 	private bucket activeBuck;
@@ -22,7 +22,7 @@ public class movement : MonoBehaviour
 		activeBuck = GetComponent<bucket>();
 	}
 
-	public float strength;
+
 	void Update ()
 	{
 		InputThings();
@@ -33,7 +33,7 @@ public class movement : MonoBehaviour
 		// move left
 		if (Input.GetAxisRaw("Horizontal") < 0)
 		{
-			transform.Translate(-0.04f, 0, 0);
+			transform.Translate(-strength, 0, 0);
 			left = true;
 			if (left && right)
 			{
@@ -52,7 +52,7 @@ public class movement : MonoBehaviour
 		// move right
 		if (Input.GetAxisRaw("Horizontal") > 0)
 		{
-			transform.Translate(0.04f, 0, 0);
+			transform.Translate(strength, 0, 0);
 			right = true;
 			if (left && right)
 			{
